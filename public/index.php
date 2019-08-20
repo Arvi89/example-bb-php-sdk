@@ -22,10 +22,13 @@ try {
     return;
 }
 
+// Default response if no be-bound request
+$response = array('not be-bound');
+
 // If you're in a Be-Bound request (can be useful if other kind of requests go through the same endpoint)
 if ($beBound->isBeBound()) {
-    $response = array();
-    // Check the message (eve though we only have 1 in our example)
+    $message = '';
+    // Check the message (even though we only have 1 in our example)
     switch ($beBound->getMessage()) {
         case 'test_message':
             // This will display the content of your json in your log
@@ -41,15 +44,10 @@ if ($beBound->isBeBound()) {
             break;
     }
 
-    // Send back your response as a json
-    \header('Content-Type: application/json');
+    // Send the beapp-message in the header
     \header("beapp-message: $message");
-    echo \json_encode($response);
-
-    return;
 }
 
+// Send back your response as a json
 \header('Content-Type: application/json');
-echo \json_encode(array(
-    'not be-bound',
-));
+echo \json_encode($response);
