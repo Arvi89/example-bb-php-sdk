@@ -1,0 +1,13 @@
+<beapp xmlns="https://be-bound.com/v7/Manifest"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="https://be-bound.com/v7/Manifest">
+    <messages>
+        <message name="test_message">
+            <boolean name="test_bool" />
+            <integer name="test_int" />
+        </message>
+        <message name="test_response">
+            <string name="test_string" />
+        </message>
+    </messages>
+</beapp>

@@ -1,0 +1,27 @@
+{
+    "name": "arvi89/test-sdk-php",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Arvi LEFEVRE",
+            "email": "arvi@be-bound.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Arvi89/be-bound-php-sdk"
+        }
+    ],
+    "require": {
+        "be-bound/sdk-php": "dev-master#9c4ed4b"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
