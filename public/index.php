@@ -3,12 +3,12 @@
 use BeBound\Sdk;
 use BeBound\BeBoundException;
 
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 // Create Be-Bound SDK with the proper values for your be-app
 $beBound = new Sdk(array(
-    'id' => '22f2deec-26cb-4cfe-a00b-a749958aa91a',
-    'secret' => '123456',
+    'id'      => '22f2deec-26cb-4cfe-a00b-a749958aa91a',
+    'secret'  => '123456',
     'version' => 1,
 ));
 
@@ -18,6 +18,7 @@ try {
     // If it's a Be-Bound request and authentication or version is wrong, it will throw a BeBoundException
 } catch (BeBoundException $exception) {
     \error_log($exception->getMessage());
+
     return;
 }
 
@@ -31,7 +32,7 @@ if ($beBound->isBeBound()) {
             \error_log(\json_encode($beBound->getData()));
 
             // Set the response message
-            $beBound->setMessage('test_response');
+            $message = 'test_response';
 
             // Set the data for your response
             $response = array(
@@ -42,7 +43,9 @@ if ($beBound->isBeBound()) {
 
     // Send back your response as a json
     \header('Content-Type: application/json');
+    \header("beapp-message: $message");
     echo \json_encode($response);
+
     return;
 }
 
